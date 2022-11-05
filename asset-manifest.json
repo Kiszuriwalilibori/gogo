@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gogo/static/css/main.ad0da8ab.css",
-    "main.js": "/gogo/static/js/main.24b1ee81.js",
+    "main.css": "/gogo/static/css/main.508044d2.css",
+    "main.js": "/gogo/static/js/main.21d288a4.js",
     "static/media/youtube.svg": "/gogo/static/media/youtube.e08d4c50a05694d0aef8f3f864898922.svg",
     "static/media/settings.svg": "/gogo/static/media/settings.f84494afe4ecfc5f6e59edd0641daaed.svg",
     "static/media/send.svg": "/gogo/static/media/send.869ec500ac53183c628dc6da78f9397b.svg",
@@ -31,11 +31,11 @@
     "static/media/information.svg": "/gogo/static/media/information.522971a05f65decdf323796073f3c027.svg",
     "static/media/cameraplus.svg": "/gogo/static/media/cameraplus.649584831832962b65761afd6448a58a.svg",
     "static/media/hamburger.svg": "/gogo/static/media/hamburger.519bcbb5a43c3cde4f2aa5af5da7d864.svg",
-    "main.ad0da8ab.css.map": "/gogo/static/css/main.ad0da8ab.css.map",
-    "main.24b1ee81.js.map": "/gogo/static/js/main.24b1ee81.js.map"
+    "main.508044d2.css.map": "/gogo/static/css/main.508044d2.css.map",
+    "main.21d288a4.js.map": "/gogo/static/js/main.21d288a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad0da8ab.css",
-    "static/js/main.24b1ee81.js"
+    "static/css/main.508044d2.css",
+    "static/js/main.21d288a4.js"
   ]
 }
