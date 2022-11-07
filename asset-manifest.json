@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gogo/static/css/main.aeaa2343.css",
-    "main.js": "/gogo/static/js/main.5f20581a.js",
+    "main.js": "/gogo/static/js/main.05860e61.js",
     "static/media/youtube.svg": "/gogo/static/media/youtube.e08d4c50a05694d0aef8f3f864898922.svg",
     "static/media/settings.svg": "/gogo/static/media/settings.f84494afe4ecfc5f6e59edd0641daaed.svg",
     "static/media/send.svg": "/gogo/static/media/send.869ec500ac53183c628dc6da78f9397b.svg",
@@ -32,10 +32,10 @@
     "static/media/cameraplus.svg": "/gogo/static/media/cameraplus.649584831832962b65761afd6448a58a.svg",
     "static/media/hamburger.svg": "/gogo/static/media/hamburger.519bcbb5a43c3cde4f2aa5af5da7d864.svg",
     "main.aeaa2343.css.map": "/gogo/static/css/main.aeaa2343.css.map",
-    "main.5f20581a.js.map": "/gogo/static/js/main.5f20581a.js.map"
+    "main.05860e61.js.map": "/gogo/static/js/main.05860e61.js.map"
   },
   "entrypoints": [
     "static/css/main.aeaa2343.css",
-    "static/js/main.5f20581a.js"
+    "static/js/main.05860e61.js"
   ]
 }
