@@ -25,7 +25,8 @@
             "pages/*": ["pages/*"],
             "HOCs/*": ["HOCs/*"],
             "functions/*": ["functions/*"],
-            "routing/*": ["routing/*"]
+            "routing/*": ["routing/*"],
+            "Pages/*": ["Pages/*"]
         }
     },
     "include": ["src"]
