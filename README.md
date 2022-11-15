@@ -35,6 +35,6 @@ However, it shows its best on Chrome. At least one feature is not visible on FF 
 
 initial
 
-### Important Notes
+### Important!!!
 
 The password is set to "MISIO"
