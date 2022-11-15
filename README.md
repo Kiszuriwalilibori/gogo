@@ -22,7 +22,7 @@
 
 -   That site is hosted on GH Pages
 -   Is available on https://kiszuriwalilibori.github.io/gogo/
--   For local copy: 1. fetch/clone repo 2. run npm install (note ready for yarn). 3. Add .env file with content REACT_APP_API_KEY {your Google key}. 3 run with npm run
+-   For local copy: 1. fetch/clone repo 2. run npm install (note ready for yarn). 3. Add .env file with content REACT_APP_API_KEY ={your Google key}. 3 add REACT_APP_PASSWORD ={your passwor here} key to .env file. 4. run with npm run
 
 ## Browser Support
 
