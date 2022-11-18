@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { RootStateType } from "types";
-import { withRouter } from "react-router";
+
 import YouTubePage from "./YouTubePage";
 
 const mapStateToProps = (state: RootStateType) => ({
@@ -10,4 +10,4 @@ const mapStateToProps = (state: RootStateType) => ({
     errorMessage: state.fetch.errorMessage,
 });
 
-export default withRouter(connect(mapStateToProps, {})(YouTubePage));
+export default connect(mapStateToProps, {})(YouTubePage);

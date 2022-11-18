@@ -1,23 +1,15 @@
 import { Route } from "react-router-dom";
-import { lazy } from "react";
-
+import { Routes } from "react-router-dom";
 import Paths from "routing/paths";
 
-import { LoginPage } from "pages/index";
-
-const YouTubePage = lazy(() => import("pages/YouTubePage"));
+import { LoginPage, YouTubePage } from "pages/index";
 
 const App = () => {
     return (
-        <>
-            <Route exact path={Paths.landing}>
-                <LoginPage />
-            </Route>
-
-            <Route exact path={Paths.youtube}>
-                <YouTubePage />
-            </Route>
-        </>
+        <Routes>
+            <Route path={Paths.landing} element={<LoginPage />} />
+            <Route path={Paths.youtube} element={<YouTubePage />} />
+        </Routes>
     );
 };
 

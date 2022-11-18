@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
-import { useHistory, withRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { RegisterOptions, useForm } from "react-hook-form";
 
 import paths from "routing/paths";
@@ -42,13 +42,13 @@ const Login = () => {
     const { logUser, logOutUser } = useDispatchAction();
     const refPassword = useRef<HTMLInputElement | null>(null);
     const [isError, setError, clearError] = useBoolean(false);
-    const history = useHistory();
+    const history = useNavigate();
 
     const onFormSubmit = useCallback(() => {
         const password = refPassword.current!.value;
         if (password === process.env.REACT_APP_PASSWORD) {
             logUser();
-            history.push(paths.youtube);
+            history(paths.youtube);
         } else {
             setError();
         }
