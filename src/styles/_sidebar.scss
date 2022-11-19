@@ -1,13 +1,13 @@
 .sidebar {
     position: relative;
     min-width: calc(var(--thumbnail-size) + 20px);
-    //max-height: 100vh; przez to nie dochodzilo do dna
-    overflow-y: auto; // dostawalo suwaka ktorego nie chcemy
+    overflow-y: auto;
     overflow-y: hidden;
     display: grid;
     grid-row-gap: 40px;
     margin-left: var(--sidebar-margin-left);
     grid-template-columns: 1fr;
+
     &.sidebar--horizontal {
         margin: 0;
         display: flex;

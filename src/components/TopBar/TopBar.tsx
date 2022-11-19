@@ -79,7 +79,6 @@ const TopBar = (props: Props) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewportType]);
-
     useEffect(() => {
         if (!process.env.REACT_APP_API_KEY) {
             const error = {

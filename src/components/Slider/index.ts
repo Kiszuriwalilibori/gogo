@@ -5,7 +5,6 @@ import { renderConditionally } from "HOCs";
 import Slider from "./Slider";
 
 const mapStateToProps = (state: RootStateType) => ({
-    movies: state.movies.movies,
     renderCondition: Boolean(state.movies.movies.length),
 });
 

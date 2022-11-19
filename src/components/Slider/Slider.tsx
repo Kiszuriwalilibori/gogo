@@ -1,15 +1,15 @@
 import uuid from "react-uuid";
 import isEqual from "lodash/isEqual";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import useDispatchAction from "hooks/useDispatchAction";
-import Movie from "./Movie";
+import VideoThumbnail from "./VideoThumbnail";
 import ButtonPrevious from "./ButtonPrevious";
+import ButtonNext from "./ButtonNext";
 
 import { useBreakpoints } from "contexts/ViewPortProvider";
 import { Video, SliderOrientation } from "types";
-import ButtonNext from "./ButtonNext";
+import { useThumbnails, useSelectVideo } from "hooks";
 
 const movieHeight = 200;
 const movieWidth = 180;
@@ -39,38 +39,16 @@ function calculateNumberOfVideos(
     return count;
 }
 
-interface Props {
-    movies: Video[];
-    renderCondition?: boolean;
-}
-
-const Slider = (props: Props) => {
-    const { movies } = props;
-    const { width, height, orientation: sliderOrientation } = useBreakpoints();
-    const [selected, setSelected] = useState<any>({});
+const Slider = () => {
+    const { width, height, orientation: sliderOrientation, sliderClass } = useBreakpoints();
     const [moviesNumber, setMoviesNumber] = useState<number>(0);
-    const [firstMovie, setFirstMovie] = useState<number>(0);
-    const { setSelectedMovie } = useDispatchAction();
+
     const sliderRef = useRef<HTMLBaseElement>(null);
+    const { selectedVideo, selectVideo } = useSelectVideo();
 
-    const showNext = useCallback(() => {
-        if (firstMovie <= movies.length - 2 - moviesNumber) setFirstMovie(firstMovie => firstMovie + 1);
-        else {
-            setFirstMovie(0);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [firstMovie, moviesNumber, movies.length]);
-
-    const showPrevious = useCallback(() => {
-        if (firstMovie !== 0) setFirstMovie(firstMovie - 1);
-        else {
-            setFirstMovie(movies.length - 1);
-        }
-    }, [firstMovie, movies.length]);
-
-    const selectMovie = useCallback((movie: Video) => {
-        setSelected(movie);
-    }, []);
+    const { showNext, showPrevious, visibleVideoThumbnails, isNextDisabled, isPreviousDisabled } = useThumbnails({
+        moviesNumber,
+    });
 
     useEffect(() => {
         const count = calculateNumberOfVideos(sliderOrientation!, width, height);
@@ -78,39 +56,26 @@ const Slider = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [width, height, sliderOrientation]);
 
-    useEffect(() => {
-        selected && setSelectedMovie(selected);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected]);
-
-    const selectedMovies = movies.slice(firstMovie, moviesNumber + firstMovie);
-
-    const sliderClass =
-        sliderOrientation === "horizontal" ? "sidebar sidebar--horizontal" : "sidebar sidebar--vertical";
-
     return (
         <aside className={sliderClass} ref={sliderRef}>
             <ButtonPrevious
                 sliderOrientation={sliderOrientation}
                 clickHandler={showPrevious}
-                disabled={firstMovie <= moviesNumber - 1}
+                disabled={isPreviousDisabled}
             />
 
-            {selectedMovies.map(movie => {
+            {visibleVideoThumbnails.map(video => {
                 return (
-                    <Movie
+                    <VideoThumbnail
                         key={uuid()}
-                        clickHandler={selectMovie}
-                        movie={movie}
-                        isSelected={isEqual(movie, selected)}
+                        clickHandler={selectVideo}
+                        movie={video}
+                        isSelected={isEqual(video, selectedVideo)}
                     />
                 );
             })}
-            <ButtonNext
-                sliderOrientation={sliderOrientation}
-                clickHandler={showNext}
-                disabled={firstMovie >= movies.length - 2 - moviesNumber}
-            />
+
+            <ButtonNext sliderOrientation={sliderOrientation} clickHandler={showNext} disabled={isNextDisabled} />
         </aside>
     );
 };

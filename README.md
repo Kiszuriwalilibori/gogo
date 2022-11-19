@@ -31,14 +31,19 @@ However, it shows its best on Chrome. At least one feature is not visible on FF 
 
 ## Versions
 
-### 0.1.0
+### 1.0.0
 
 initial
 
-### Important!!!
+### 1.0.1
+
+with lazy loading
+
+### Important
 
 The password is set to "MISIO"
 
-### no lazy import of YoutTubePage - it throws error
+### TODO
 
-https://stackoverflow.com/questions/72167518/a-component-suspended-while-responding-to-synchronous-input
+strange undefined in sliderorientation
+review types in ViewPortProvider

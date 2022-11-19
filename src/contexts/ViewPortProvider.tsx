@@ -19,6 +19,7 @@ interface viewportContextInterface {
     width?: number;
     height?: number;
     orientation?: Orientation;
+    sliderClass?: string;
 }
 
 const viewportContext = createContext({} as viewportContextInterface);
@@ -42,6 +43,7 @@ const ViewportProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const [orientation, setOrientation] = useState(() => getSliderOrientation(getDeviceConfig(window.innerWidth)));
+    const sliderClass = orientation === "horizontal" ? "sidebar sidebar--horizontal" : "sidebar sidebar--vertical";
 
     useEffect(() => {
         const calcInnerWidth = throttle(function () {
@@ -69,15 +71,17 @@ const ViewportProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }, []);
 
     return (
-        <viewportContext.Provider value={{ point: point, width: width, height: height, orientation: orientation }}>
+        <viewportContext.Provider
+            value={{ point: point, width: width, height: height, orientation: orientation, sliderClass: sliderClass }}
+        >
             {children}
         </viewportContext.Provider>
     );
 };
 
 const useBreakpoints = () => {
-    const { point, width, height, orientation } = useContext(viewportContext);
-    return { point, width, height, orientation };
+    const { point, width, height, orientation, sliderClass } = useContext(viewportContext);
+    return { point, width, height, orientation, sliderClass };
 };
 
 export { ViewportProvider, useBreakpoints };

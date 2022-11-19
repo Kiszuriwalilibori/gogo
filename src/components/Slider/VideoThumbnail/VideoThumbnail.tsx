@@ -5,7 +5,7 @@ interface Props {
     isSelected: boolean;
 }
 
-const Movie = (props: Props) => {
+const VideoThumbnail = (props: Props) => {
     const { clickHandler, movie, isSelected } = props;
 
     if (!Boolean(movie?.snippet?.title && movie.id.videoId)) return null;
@@ -28,4 +28,4 @@ const Movie = (props: Props) => {
     );
 };
 
-export default Movie;
+export default VideoThumbnail;
