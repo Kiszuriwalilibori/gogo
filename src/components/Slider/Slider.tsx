@@ -4,12 +4,12 @@ import isEqual from "lodash/isEqual";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import useDispatchAction from "hooks/useDispatchAction";
-import Icons from "icons";
 import Movie from "./Movie";
+import ButtonPrevious from "./ButtonPrevious";
 
 import { useBreakpoints } from "contexts/ViewPortProvider";
-import { BasicButton } from "components";
-import { Video } from "types/index";
+import { Video, SliderOrientation } from "types";
+import ButtonNext from "./ButtonNext";
 
 const movieHeight = 200;
 const movieWidth = 180;
@@ -19,7 +19,7 @@ function calculateMoviesNumber(window: number, movieSize: number) {
 }
 
 function calculateNumberOfVideos(
-    orientation: "vertical" | "horizontal",
+    orientation: SliderOrientation,
     width: number | undefined,
     height: number | undefined
 ) {
@@ -85,24 +85,16 @@ const Slider = (props: Props) => {
 
     const selectedMovies = movies.slice(firstMovie, moviesNumber + firstMovie);
 
-    const previousButtonClass =
-        sliderOrientation === "horizontal" ? "button--sidebar button--left" : "button--sidebar button--downwards";
-    const nextButtonClass =
-        sliderOrientation === "horizontal" ? "button--sidebar button--right" : "button--sidebar button--upwards";
-
     const sliderClass =
         sliderOrientation === "horizontal" ? "sidebar sidebar--horizontal" : "sidebar sidebar--vertical";
 
     return (
         <aside className={sliderClass} ref={sliderRef}>
-            <BasicButton
-                id="previous"
-                className={previousButtonClass}
-                onClick={showPrevious}
+            <ButtonPrevious
+                sliderOrientation={sliderOrientation}
+                clickHandler={showPrevious}
                 disabled={firstMovie <= moviesNumber - 1}
-            >
-                <Icons.Left />
-            </BasicButton>
+            />
 
             {selectedMovies.map(movie => {
                 return (
@@ -114,14 +106,11 @@ const Slider = (props: Props) => {
                     />
                 );
             })}
-            <BasicButton
-                id="next"
+            <ButtonNext
+                sliderOrientation={sliderOrientation}
+                clickHandler={showNext}
                 disabled={firstMovie >= movies.length - 2 - moviesNumber}
-                className={nextButtonClass}
-                onClick={showNext}
-            >
-                <Icons.Right />
-            </BasicButton>
+            />
         </aside>
     );
 };

@@ -7,4 +7,5 @@ interface Video {
     snippet: { title: string; description: string; thumbnails: { medium: { url: string } } };
 }
 
-export type { RootStateType, Video };
+type SliderOrientation = "vertical" | "horizontal";
+export type { RootStateType, Video, SliderOrientation };

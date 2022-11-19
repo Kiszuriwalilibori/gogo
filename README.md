@@ -38,3 +38,7 @@ initial
 ### Important!!!
 
 The password is set to "MISIO"
+
+### no lazy import of YoutTubePage - it throws error
+
+https://stackoverflow.com/questions/72167518/a-component-suspended-while-responding-to-synchronous-input
